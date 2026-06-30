@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+    container_name: kingofthenorth-web
+    restart: unless-stopped
+    env_file:
+      - ./deploy/.env.production
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./data:/app/data

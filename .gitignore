@@ -1,0 +1,19 @@
+node_modules
+.next
+out
+.env*.local
+.env
+deploy/.env.production
+data/*.json
+!.gitkeep
+dev-server*.log
+
+# Local source/export files that are not needed at runtime
+/ig_*.png
+/logo.png
+/EB2026_logo_white.webp
+/NAF_logo.png
+/tourplay_logo_512.png
+/ts-icon.svg
+/vimpel-20pct-bredare-transparent.png
+/public/assets/source/
