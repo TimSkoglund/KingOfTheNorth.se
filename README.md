@@ -141,7 +141,7 @@ cd /var/www/kingofthenorth
 bash deploy/deploy.sh
 ```
 
-Appen lyssnar internt på `127.0.0.1:3000`.
+Appen lyssnar internt på `127.0.0.1:3001` på dropleten och kör Next inuti containern på port `3000`.
 
 ### 4. Nginx
 
