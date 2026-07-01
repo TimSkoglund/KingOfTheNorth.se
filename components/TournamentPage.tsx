@@ -179,8 +179,7 @@ export function TournamentPage({ content, registrations }: { content: SiteConten
         <h2>{labels.registeredCoaches}</h2>
         <div className="coach-capacity">
           <strong>{regularRegistrations.length}/{maxCoaches}</strong>
-          <span>{labels.spots} - {regularLeft} {labels.spotsLeft}</span>
-          {oddmanSlots > 0 && <span>{labels.oddman}: {oddmanRegistrations.length}/{oddmanSlots} - {oddmanLeft} {labels.spotsLeft}</span>}
+          <em>{regularLeft} {labels.spotsLeft}</em>
         </div>
         <div className="registered-coaches-table-wrap">
           <table className="registered-coaches-table">
