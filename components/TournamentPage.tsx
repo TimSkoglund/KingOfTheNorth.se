@@ -17,6 +17,7 @@ const contactPhone = "0702613853";
 
 export function TournamentPage({ content, registrations }: { content: SiteContent; registrations: Registration[] }) {
   const [locale, setLocale] = useState<Locale>("sv");
+  const [menuOpen, setMenuOpen] = useState(false);
   const t = (value: { sv: string; en: string }) => value[locale];
 
   const labels = useMemo(
@@ -51,6 +52,7 @@ export function TournamentPage({ content, registrations }: { content: SiteConten
       yes: locale === "sv" ? "Ja" : "Yes",
       no: locale === "sv" ? "Nej" : "No",
       send: locale === "sv" ? "Skicka mail" : "Send email",
+      menu: locale === "sv" ? "Meny" : "Menu",
       admin: "Admin",
     }),
     [locale]
@@ -77,20 +79,32 @@ export function TournamentPage({ content, registrations }: { content: SiteConten
 
   return (
     <main>
-      <header className="site-header">
+      <header className={`site-header${menuOpen ? " menu-open" : ""}`}>
         <a className="brand" href="#home" aria-label="King of the North home">
           <img src={asset.skull} alt="" />
           <span>King of the North</span>
         </a>
-        <nav aria-label="Primary navigation">
-          <a href="#tournament">{t(content.nav.tournament)}</a>
-          <a href="#schedule">{t(content.nav.schedule)}</a>
-          <a href="#coaches">{labels.registeredCoaches}</a>
-          <a href="#contact">{labels.contact}</a>
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label={labels.menu}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav id="primary-navigation" aria-label="Primary navigation">
+          <a href="#tournament" onClick={() => setMenuOpen(false)}>{t(content.nav.tournament)}</a>
+          <a href="#schedule" onClick={() => setMenuOpen(false)}>{t(content.nav.schedule)}</a>
+          <a href="#coaches" onClick={() => setMenuOpen(false)}>{labels.registeredCoaches}</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>{labels.contact}</a>
         </nav>
         <div className="language-switcher" aria-label="Language switcher">
-          <button className={locale === "sv" ? "active" : ""} onClick={() => setLocale("sv")}>Svenska</button>
-          <button className={locale === "en" ? "active" : ""} onClick={() => setLocale("en")}>English</button>
+          <button className={locale === "sv" ? "active" : ""} onClick={() => { setLocale("sv"); setMenuOpen(false); }}>Svenska</button>
+          <button className={locale === "en" ? "active" : ""} onClick={() => { setLocale("en"); setMenuOpen(false); }}>English</button>
         </div>
       </header>
 

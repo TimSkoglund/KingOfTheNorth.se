@@ -41,6 +41,25 @@ img { max-width: 100%; display: block; }
 .brand img { width: 2.25rem; height: 2.25rem; object-fit: contain; }
 nav { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(0.75rem, 2vw, 1.5rem); color: var(--muted); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; }
 nav a:hover { color: var(--text); }
+.menu-toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  gap: 0.27rem;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #dbeaf8;
+  box-shadow: 0 0 0.35rem rgba(143, 200, 255, 0.28);
+}
 .language-switcher { display: inline-flex; border: 1px solid var(--line); background: rgba(255,255,255,0.04); padding: 0.2rem; border-radius: 0.55rem; overflow: hidden; }
 .language-switcher button, .toggle-field button {
   border: 0;
@@ -1410,6 +1429,69 @@ main,
   .registered-coaches-table th {
     font-size: 0.62rem;
     letter-spacing: 0.08em;
+  }
+}
+
+/* Mobile hamburger navigation */
+@media (max-width: 620px) {
+  .site-header {
+    position: fixed;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    justify-items: stretch;
+    gap: 0.75rem;
+    padding: 0.65rem 0.9rem;
+  }
+
+  .brand span {
+    display: inline;
+    font-size: 0.78rem;
+  }
+
+  .brand img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+  }
+
+  .site-header nav,
+  .site-header .language-switcher {
+    display: none;
+  }
+
+  .site-header.menu-open nav {
+    grid-column: 1 / -1;
+    display: grid;
+    justify-items: center;
+    gap: 0.95rem;
+    padding: 0.9rem 0 0.35rem;
+    font-size: 0.8rem;
+  }
+
+  .site-header.menu-open .language-switcher {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    justify-self: center;
+    margin-bottom: 0.35rem;
+  }
+
+  .site-header.menu-open .menu-toggle span:nth-child(1) {
+    transform: translateY(0.39rem) rotate(45deg);
+  }
+
+  .site-header.menu-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.menu-open .menu-toggle span:nth-child(3) {
+    transform: translateY(-0.39rem) rotate(-45deg);
+  }
+
+  .hero {
+    padding-top: 7.25rem;
   }
 }
 
